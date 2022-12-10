@@ -1,4 +1,7 @@
-# DragonridingJournal [![](http://cf.way2muchnoise.eu/729598.svg)](https://www.curseforge.com/wow/addons/)[![](http://img.shields.io/badge/runs-retail-brightgreen)]https://www.curseforge.com/wow/addons/)
+# DragonridingJournal [![](http://cf.way2muchnoise.eu/729598.svg)](https://www.curseforge.com/wow/addons/)[![](http://img.shields.io/badge/runs-retail-brightgreen)]
+https://www.curseforge.com/wow/addons/the-dragonriding-journal
+
+https://addons.wago.io/addons/thedragonridingjournal
 
 [![](https://media.forgecdn.net/attachments/76/25/patreon-medium-button.png)](https://www.patreon.com/SLOKnightfall)
 
