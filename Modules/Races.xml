@@ -1,0 +1,80 @@
+	<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+	<Script file="Races.lua"/>
+
+	<Frame name="DragonJournalRaceTimer" hidden="true" parent="UIParent" enableMouse="true" movable="true" mixin="DragonridingJournal_TimerMixin" toplevel = "true" >
+		<Anchors>
+		</Anchors>
+		<Size x="110" y="50"/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString parentKey="StopwatchTickerSecond" inherits="GameFontHighlightLarge" justifyH="CENTER" text = "00">
+					<Anchors>
+				<Anchor point="TOPLEFT" relativeTo = "$parent" relativePoint="TOPLEFT" x="27" y="-18.5"/>
+					</Anchors>
+				</FontString>
+				<FontString text="." inherits="GameFontHighlightLarge">
+					<Anchors>
+				<Anchor point="TOPLEFT" relativeTo= "$parent" relativePoint="TOPLEFT" x="49" y="-17"/>
+					</Anchors>
+				</FontString>
+				<FontString parentKey="StopwatchTickerMillisecond" inherits="GameFontHighlightLarge" justifyH="CENTER" text = "00">
+					<Anchors>
+				<Anchor point="TOPLEFT" relativeTo= "$parent" relativePoint="TOPLEFT" x="55" y="-18.5"/>
+					</Anchors>
+				</FontString>
+				<Texture parentKey="TopBG" atlas="loottoast-dragonriding" useAtlasSize="false" >
+					<Size x="110" y="50"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+				</Texture>
+				<Texture parentKey="MidBG" atlas="dragonriding-talents-background" useAtlasSize="false" >
+					<Size x="93.3" y="30.5"/>
+					<Anchors>
+						<Anchor point="CENTER" relativeTo= "$parent" relativePoint="CENTER" x="0" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnHide method="OnHide"/>
+		 	<OnDragStart method="OnDragStart">
+
+
+			</OnDragStart>
+		  	<OnDragStop>self:SavePosition()</OnDragStop>
+		</Scripts>
+	</Frame>
+	<Frame name="DragonJournalRaceGoal" hidden="false" parent="DragonJournalRaceTimer" enableMouse="true" movable="true" >
+		<Anchors>
+			<Anchor point="TOP" relativeTo = "$parent" relativePoint="BOTTOM" x="0" y="15"/>
+
+		</Anchors>
+		<Size x="50" y="25"/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString parentKey="GoalTime" inherits="GameFontHighlightSmall" justifyH="CENTER" text = "00">
+					<Anchors>
+				<Anchor point="CENTER" relativeTo = "$parent" relativePoint="CENTER" x="0" y="0"/>
+					</Anchors>
+				</FontString>
+				<Texture parentKey="TopBG" atlas="loottoast-dragonriding" useAtlasSize="false" >
+					<Size x="50" y="25"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+				</Texture>
+				<Texture parentKey="MidBG" atlas="dragonriding-talents-background" useAtlasSize="false" >
+					<Size x="43" y="10.5"/>
+					<Anchors>
+						<Anchor point="CENTER" relativeTo= "$parent" relativePoint="CENTER" x="0" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+		</Scripts>
+	</Frame>
+	</Ui>

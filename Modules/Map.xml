@@ -1,0 +1,76 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="Map.lua"/>
+
+	<Frame name="DragonridingJournalMapPinTemplate" enableMouseMotion="true" mixin="DragonridingJournalMapPinMixin" virtual="true" frameLevel = "PIN_FRAME_LEVEL_TOPMOST">
+		<Size x="75" y="75"/>
+		<Layers>
+			<Layer level="ARTWORK" >
+				<Texture parentKey="Texture" file="Interface/ICONS/Ability_DragonRiding_Glyph01">
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+					<Size x="75" y="75"/>
+				</Texture>
+				<MaskTexture parentKey="Mask" file="Interface/CHARACTERFRAME/TempPortraitAlphaMaskSmall" hWrapMode="CLAMPTOBLACKADDITIVE" vWrapMode="CLAMPTOBLACKADDITIVE">
+					<Size x="65" y="65	"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+					<MaskedTextures>
+						<MaskedTexture childKey="Texture" />
+					</MaskedTextures>
+				</MaskTexture>
+			</Layer>
+			<Layer level="HIGHLIGHT">
+				<Texture parentKey="HighlightTexture" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeKey="$parent.Texture"/>
+						<Anchor point="BOTTOMRIGHT" relativeKey="$parent.Texture"/>
+					</Anchors>
+					<Color r="1.0" g="1.0" b="1.0" a="0.4"/>
+				</Texture>
+				<MaskTexture parentKey="Mask" file="Interface/CHARACTERFRAME/TempPortraitAlphaMaskSmall" hWrapMode="CLAMPTOBLACKADDITIVE" vWrapMode="CLAMPTOBLACKADDITIVE">
+					<Size x="65" y="65	"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+					<MaskedTextures>
+						<MaskedTexture childKey="HighlightTexture" />
+					</MaskedTextures>
+				</MaskTexture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame parentKey="Collected" hidden="false">
+			<Size x="55" y="55"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture parentKey="Icon" atlas ="ParagonReputation_Checkmark" useAtlasSize="false" setAllPoints="true" >
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Frame parentKey="Glow" hidden="true">
+			<Size x="95" y="95"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture parentKey="Icon" atlas="ChallengeMode-KeystoneSlotFrameGlow" useAtlasSize="false" setAllPoints="true" >
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+		</Frames>
+		<Animations>
+			<AnimationGroup parentKey="ShowAnim" setToFinalAlpha="true">
+				<Alpha duration="0.25" order="1" fromAlpha="0" toAlpha="1"/>
+			</AnimationGroup>
+		</Animations>
+	</Frame>
+</Ui>

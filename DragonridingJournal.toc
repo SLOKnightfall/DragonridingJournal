@@ -1,0 +1,41 @@
+## Interface: 100002
+## Title: Dragonriding Journal (@project-version@)
+## Version: @project-version@
+## Game Version: 10.0.2
+## Author: SLOKnightfall
+## SavedVariables: DragonridingJournalConfig
+## X-Curse-Project-ID: 729598
+## X-Wago-ID: 0mKOdRGx
+
+#Libraries
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\AceConsole-3.0\AceConsole-3.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+Libs\AceEvent-3.0\AceEvent-3.0.xml
+Libs\AceHook-3.0\AceHook-3.0.xml
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+Libs\LibDBIcon-1.0\LibDBIcon-1.0.lua
+Libs\AceGUI-3.0-SharedMediaWidgets\widget.xml
+Libs\LibSharedMedia-3.0\lib.xml
+
+Locale\enUS.lua
+
+DragonridingJournal.lua
+Modules/Vigor.xml
+Modules/Map.xml
+Modules/Bio.lua
+Modules/Guide.xml
+Modules/Races.xml
+Data/Glyphs.lua
+Data/Rostrum.lua
+Data/Races.lua
+Data/ProtoUnlocks.lua
+Data/WindborneUnlocks.lua
+Data/HighlandUnlocks.lua
+Data/CliffsideUnlocks.lua

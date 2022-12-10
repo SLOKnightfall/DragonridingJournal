@@ -1,0 +1,5 @@
+<Bindings>
+	<Binding name="TOGGLE_DRAGONRIDINGJOURNAL" header="DRAGONRIDINGJOURNAL" category="ADDONS">
+        	DragonridingJournalFrame_Toggle()
+	</Binding>
+</Bindings>

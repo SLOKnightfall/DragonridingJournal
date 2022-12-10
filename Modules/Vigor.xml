@@ -1,0 +1,43 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+	<Script file="Modules/Vigor.lua"/>
+
+
+	<Frame name="DragonJournlVigorContainerFrameTempl" parent="UIParent"  movable="true" hidden="false" enableMouse ="true" mixin = "DragonTrainingVigorBarFrameMixin" >
+		<Size x="300" y="50"/>
+		<Anchors>
+			<Anchor point="CENTER" x="0" y="0"/>
+		</Anchors>
+		<Frames>
+			<Frame name="$parentCounter" hidden="false" toplevel = "true" parentKey="Counter" framelevel="500" >
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo = "$parent" relativePoint="TOPLEFT" x="-8.5" y="-4"/>
+
+				</Anchors>
+				<Size x="45" y="42"/>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString parentKey="desc" inherits="GameFontNormalLarge" justifyH="CENTER" text = "0">
+							<Anchors>
+								<Anchor point="CENTER"  x="0" y="0"/>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Frame name="$parentwidgets" inherits="UIWidgetTemplateFillUpFrames" hidden="false" parentKey="widgets">
+				<Anchors>
+				<Anchor point="CENTER" x="0" y="0"/>
+				</Anchors>
+				<Size x="300" y="50"/>
+			</Frame>
+
+	</Frames>
+		<Scripts>
+			<OnDragStart method = "OnDragStart" />
+			<OnDragStop method = "OnDragStop" />
+			<OnEnter method = "OnEnter" />
+			<OnLeave method = "OnLeave" />
+		</Scripts>
+	</Frame>
+</Ui>
