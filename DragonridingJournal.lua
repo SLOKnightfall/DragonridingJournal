@@ -1248,10 +1248,10 @@ function addon:EventHandler(event, ...)
 
 		elseif tContains(DragonFlyingSpells, spellID) then
 			addon:PrintEmote(profile.summon_end)
-			self.db.char.mounted = self.db.char.mounted or {}
-			self.db.char.mounted[addon:GetCurrentDragon()] = self.db.char.mounted[addon:GetCurrentDragon()] or 0
-			print(self.db.char.mounted[addon:GetCurrentDragon()] )
-			self.db.char.mounted[addon:GetCurrentDragon()] = self.db.char.mounted[addon:GetCurrentDragon()] + 1
+			--self.db.char.mounted = self.db.char.mounted or {}
+			--self.db.char.mounted[addon:GetCurrentDragon()] = self.db.char.mounted[addon:GetCurrentDragon()] or 0
+			--(self.db.char.mounted[addon:GetCurrentDragon()] )
+			--self.db.char.mounted[addon:GetCurrentDragon()] = self.db.char.mounted[addon:GetCurrentDragon()] + 1
 			--GetKeybinds()
 			--SetKeybind()
 
