@@ -188,7 +188,7 @@ function DragonridingJournal_TimerMixin:Update()
 	self.StopwatchTickerSecond:SetFormattedText(STOPWATCH_TIME_UNIT, second)
 	self.StopwatchTickerMillisecond:SetFormattedText("%03d", millisecond)
 
-	if timer > goalTime  and goalMedal == "gold" then
+	if tonumber(timer) > tonumber(goalTime)  and goalMedal == "gold" then
 		DragonJournalRaceGoal.GoalTime:SetFormattedText(WHITE..addon:GetRaceMedalTime("silver"))
 	end
 end

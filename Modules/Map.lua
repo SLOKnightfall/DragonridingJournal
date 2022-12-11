@@ -50,6 +50,9 @@ function DragonridingJournalMapDataProviderMixin:RefreshAllData()
 
 					if dataType == "Glyph" then 
 						pin.Texture:SetTexture(pinSettings.texture)
+
+						pin.Glow:Hide()
+
 						pin.Collected.Icon:SetAtlas("ParagonReputation_Checkmark")
 						if completed then
 							pin:SetAlpha(.45)
@@ -58,6 +61,10 @@ function DragonridingJournalMapDataProviderMixin:RefreshAllData()
 						else
 							pin:SetAlpha(pinSettings.alpha / 100)
 						end
+					elseif dataType == "Glyph" then
+						pin.Texture:SetTexture(pinSettings.texture)
+						pin.Glow:Hide()
+
 					else
 						pin.Collected.Icon:SetAtlas(pinSettings.texture)
 						pin.Collected:Hide()
@@ -88,6 +95,8 @@ function DragonridingJournalMapDataProviderMixin:RefreshAllData()
 
 						if (completed or completedAdv) then
 							pin.Texture:Show()
+							pin.Glow:Hide()
+
 							if completedAdv then
 							pin.Glow:Show()
 
