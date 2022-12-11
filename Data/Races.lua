@@ -12,6 +12,7 @@ local races = {
 		{name = "Uktulut Coaster", quest = 66777, av_quest = 66778, achievementID = {bronze = 15736 , silver = 15737, gold = 15738, av_bronze = 15739, av_silver = 15740, av_gold = 15741}, x = .554, y = .411, silver = "48.00", gold = "45.00", av_silver = "43.00", av_gold = "40.00"},
 		{name = "Wild Preserve Circuit", quest = 66710, av_quest = 66726, achievementID = {bronze = 15718 , silver = 15719, gold = 15720, av_bronze = 15721, av_silver = 15722, av_gold = 15723}, x = .426, y = .949, silver = "43.00", gold = "40.00", av_silver = "41.00", av_gold = "38.00"},
 		{name = "Wild Preserve Slalom", quest = 66721, av_quest = 66722, achievementID = {bronze = 15712 , silver = 15713, gold = 15714, av_bronze = 15715, av_silver = 15716, av_gold = 15717}, x = .470, y = .855, silver = "45.00", gold = "42.00", av_silver = "43.00", av_gold = "40.00"},
+		{name = "Wingrest Roundabout", quest = 66786, av_quest = 66787, achievementID = {bronze = 15742 , silver = 15743, gold = 15744, av_bronze = 15745, av_silver = 15746, av_gold = 15747}, x = .730, y = .330, silver = "56.00", gold = "53.00", av_silver = "56.00", av_gold = "53.00"},
 	}, 
 
 	[2023] = --Ohn'Ahran Plains
