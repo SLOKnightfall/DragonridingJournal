@@ -1,8 +1,8 @@
 local addonName, addon = ...
 local L = _G.LibStub("AceLocale-3.0"):NewLocale(addonName, "enUS", true, true)
 
-_G["BINDING_NAME_TOGGLE_DRAGONTRAININGMANUAL"] = addonName.." - Toggle Guide"
-_G["BINDING_HEADER_DRAGONTRAININGMANUAL"] = addonName
+_G["BINDING_NAME_TOGGLE_DRAGONJOURNAL"] = addonName.." - Toggle Guide"
+_G["BINDING_HEADER_DRAGONJOURNAL"] = addonName
 
 if not L then return end
 

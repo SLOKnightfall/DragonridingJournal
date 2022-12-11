@@ -55,9 +55,9 @@ local widgetInfo= {
 
 --Derived from Blizzard_UIWidgetTemplateFillUpFrame.lua
 
-DragonTrainingVigorBarFrameMixin = {}
+DragonJournalVigorBarFrameMixin = {}
 
-function DragonTrainingVigorBarFrameMixin:OnDragStart()
+function DragonJournalVigorBarFrameMixin:OnDragStart()
 	if addon.db.profile.LockSecondary then 
 		return 
 	else 
@@ -65,21 +65,21 @@ function DragonTrainingVigorBarFrameMixin:OnDragStart()
 	end
 end
 
-function DragonTrainingVigorBarFrameMixin:OnDragStop()
+function DragonJournalVigorBarFrameMixin:OnDragStop()
 	addon:SaveFramePosition(self, "position")
 end
 
-function DragonTrainingVigorBarFrameMixin:OnEnter()
+function DragonJournalVigorBarFrameMixin:OnEnter()
 	self:SetAlpha(1)
 end
 
-function DragonTrainingVigorBarFrameMixin:OnLeave()
+function DragonJournalVigorBarFrameMixin:OnLeave()
 	self:SetAlpha(addon.db.profile.VigorAlpha / 100)
 end
 
 
 local container
-function DragonTrainingVigorBarFrameMixin:OnLoad()
+function DragonJournalVigorBarFrameMixin:OnLoad()
 	self:SetMovable(not addon.db.profile.LockSecondary)
 	self:RegisterForDrag("LeftButton")
 	self:SetAlpha(0)
@@ -95,7 +95,7 @@ function DragonTrainingVigorBarFrameMixin:OnLoad()
 	addon:LoadFramePosition(self,"position")
 end
  
-function DragonTrainingVigorBarFrameMixin:OnUpdate()
+function DragonJournalVigorBarFrameMixin:OnUpdate()
 	local mapID = C_Map.GetBestMapForUnit("PLAYER")
 	if (tContains(DragonFlyingZones, mapID) or addon:AuraScan()) then
 		if (not self.Ticker) then
@@ -119,12 +119,12 @@ local function UpdateWidgetInfo()
 	widgetInfo.fillValue = (fillValue and fillValue.barValue) or 0
 
 	widgetInfo.displayCount = widgetInfo.numTotalFrames
-	widgetInfo.numFullFrames = DragonJournlVigorContainerFrameTempl:GetNumFullFrames()
+	widgetInfo.numFullFrames = DragonJournlVigorContainerFrame:GetNumFullFrames()
 	widgetInfo.lastfillValue = widgetInfo.fillValue
 	widgetInfo.pulseFillingFrame = not (widgetInfo.lastfillValue == widgetInfo.fillValue)
 end
 
-function DragonTrainingVigorBarFrameMixin:Setup()
+function DragonJournalVigorBarFrameMixin:Setup()
 	self:SetShown(not addon.db.profile.HideSecondaryVigor)
 
 	self.widgets.Setup(self.widgets, widgetInfo, self.widgets)
@@ -248,7 +248,7 @@ end
 
 
 local hasPlayedAlert = false
-function DragonTrainingVigorBarFrameMixin:GetNumFullFrames()
+function DragonJournalVigorBarFrameMixin:GetNumFullFrames()
 	local info
 	if not addon:AuraScan() then 
 		return self.widgets.lastNumFullFrames

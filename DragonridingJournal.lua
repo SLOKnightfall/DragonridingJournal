@@ -127,10 +127,10 @@ function optionHandler:Setter(info, value)
 		addon.DataBroker:Toggle(value)
 
 	elseif info.arg == "HideSecondaryVigor" then 
-		--DragonJournlVigorContainerFrameTempl:OnUpdate()
+		--DragonJournlVigorContainerFrame:OnUpdate()
 
 	elseif info.arg == "LockSecondary" then
-		DragonJournlVigorContainerFrameTempl:SetMovable(not value)
+		DragonJournlVigorContainerFrame:SetMovable(not value)
 
 	elseif info.arg == "unlockTimer" then
 		DragonJournalRaceTimer:SetPositionLock(not value)
@@ -1036,7 +1036,7 @@ function addon:OnInitialize()
 	LibStub("AceConfigRegistry-3.0"):ValidateOptionsTable(options, addonName)
 	LibStub("AceConfig-3.0"):RegisterOptionsTable(addonName, options)
 
-	self.optionsFrame = LibStub("AceConfigDialog-3.0"):AddToBlizOptions("DragonridingJournal", "Dragon Training Manual")
+	self.optionsFrame = LibStub("AceConfigDialog-3.0"):AddToBlizOptions("DragonridingJournal", "Dragonriding Journal")
 	self.db.RegisterCallback(addon, "OnProfileChanged", "RefreshConfig")
 	self.db.RegisterCallback(addon, "OnProfileCopied", "RefreshConfig")
 
@@ -1071,7 +1071,7 @@ function addon:OnEnable()
 		dragons[i].mood = addon:GetMood()
 	end
 
-	DragonJournlVigorContainerFrameTempl:OnLoad()
+	DragonJournlVigorContainerFrame:OnLoad()
 	addon.initTourGuide()
 	if self.db.profile.HideBlizzardVigor then
 		UIWidgetPowerBarContainerFrame:Hide()
@@ -1217,7 +1217,7 @@ function addon:EventHandler(event, ...)
 	if event == "PLAYER_ENTERING_WORLD" then
 
 		C_Timer.After(1.5, function() 
-			DragonJournlVigorContainerFrameTempl:OnUpdate()
+			DragonJournlVigorContainerFrame:OnUpdate()
 			DragonJournalRaceTimer:OnLoad()
 			--SetKeybind()
 		 end)

@@ -3,64 +3,6 @@
 
 	<Script file="Modules\Guide.lua"/>
 
-	<Frame name="TorghastTourGuidePowerTemplate" virtual="true" hidden="false">
-		<KeyValues>
-			<KeyValue key="ignoreInLayout" value="true" type="boolean"/>
-		</KeyValues>
-		<Size x="30" y="30"/>
-		<Anchors>
-			<Anchor point="CENTER" x="35" y="75" />
-		</Anchors>
-		<Layers>
-			<Layer level="ARTWORK">
-				<Texture file="Interface\EncounterJournal\UI-EncounterJournalTextures">
-					<Anchors>
-						<Anchor point="CENTER" />
-					</Anchors>
-					<Size x="20" y="20"/>
-					<TexCoords left="0.650390625" right="0.705078125" top="0.03125" bottom="0.0576171875"/>
-				</Texture>
-			</Layer>
-			<Layer level="OVERLAY">
-				<Texture parentKey="iconRing" atlas="adventureguide-ring">
-					<Size x="30" y="30"/>
-					<Anchors>
-						<Anchor point="CENTER" />
-					</Anchors>
-				</Texture>
-				<FontString parentKey="Text" inherits="GameFontWhiteTiny" justifyH="CENTER" justifyV="CENTER" text="100">
-					<Size x="25" y="25"/>
-					<Anchors>
-						<Anchor point="CENTER"/>
-					</Anchors>
-				</FontString>
-			</Layer>
-		</Layers>
-	</Frame>
-
-	<Frame name="TorghastTourGuideNoteTemplate" virtual="true" hidden="false">
-		<KeyValues>
-			<KeyValue key="ignoreInLayout" value="true" type="boolean"/>
-		</KeyValues>
-		<Size x="1" y="250"/>
-		<Anchors>
-			<Anchor point="TOPLEFT" relativeKey="$parent$parent.OptionText" relativePoint="BOTTOMLEFT" y="-5"/>
-			<Anchor point="TOPRIGHT" relativeKey="$parent$parent.OptionText" relativePoint="BOTTOMRIGHT" y="-5"/>
-		</Anchors>
-		<Layers>
-			<Layer level="OVERLAY">
-				<FontString parentKey="Text" inherits="GameFontWhite"  justifyH="CENTER" justifyV="TOP" text="">
-					<Anchors>
-						<Anchor point="TOPLEFT" />
-						<Anchor point="BOTTOMRIGHT" />
-					</Anchors>
-				</FontString>
-			</Layer>
-		</Layers>
-	</Frame>
-
-
-
 
 
 	<Slider name="DragonridingJournalScrollBarTemplate" mixin="DragonridingJournalScrollBarMixin" inherits="MinimalScrollBarTemplate" parentKey="ScrollBar" virtual="true">

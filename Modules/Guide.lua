@@ -326,7 +326,7 @@ local function CreateStatsFrame(parent)
 	tinsert(addon.fontStrings, (dragonInfo.mounted or 0))
 	f.totalMounted:SetPoint("TOPLEFT", f.currentBG, "BOTTOMLEFT", 20, -55)
 	f.totalMounted:SetJustifyH("CENTER")
-	local mounted = addon.db.char.mounted[addon:GetCurrentDragon()] or 0
+	local mounted = 0 --addon.db.char.mounted[addon:GetCurrentDragon()] or 0
 	f.totalMounted:SetText(L["Times Mounted: "]..mounted)
 
 	f.totalpotsCount = f:CreateFontString(nil, "OVERLAY", "GameFontBlackMedium")
