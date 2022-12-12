@@ -21,6 +21,7 @@ local goalMedal = "gold"
 local raceData
 local GOLD	= "|c00FFD200"
 local WHITE =  "|cffFFFFFF";
+local DRAGON_ZONES = {2022, 2023, 2024, 2025, 2107, 2112}
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("START_TIMER")
@@ -29,6 +30,7 @@ f:SetScript("OnEvent", function(...) f:OnEvent(...) end)
 
 function addon:GetRaceID()
 	local map = C_Map.GetBestMapForUnit("player")
+	if not map  or not tContains(DRAGON_ZONES, map) then return end
 	local position = C_Map.GetPlayerMapPosition(map, "player")
 	local raceData = addon.Data.races
 	local zonedata = raceData[map]
@@ -37,11 +39,13 @@ function addon:GetRaceID()
 
 	local posX, posY = position:GetXY()
 	for i, data in ipairs(zonedata) do
-		if (posX >= (data.x - .02) and posX <=(data.x + .02)) and (posY >= (data.y - .02) and posY <= (data.y + .02)) then
+		if (posX >= (data.x - .02) and posX <= (data.x + .02)) and (posY >= (data.y - .02) and posY <= (data.y + .02)) then
+			raceData = data
 			return data
 		end
 	end
 
+	raceData = nil
 	return false
 end
 
@@ -51,10 +55,15 @@ function addon:GetRaceTime(toastInfo)
 
 	DragonJournalRaceTimer:Stop() 
 	local data = raceData
+
+	if not data then return end
+
 	local raceID = data.achievementID.gold
 	local raceName = data.name
 	local advQuestID = tonumber(data.av_quest)
+
 	if not raceID then return end
+
 	self.db.char.races[raceID] = self.db.char.races[raceID] or {} 
 	local times = toastInfo.subtitle
 
@@ -72,7 +81,6 @@ function addon:GetRaceTime(toastInfo)
 		end
 	end
 end
-
 
 function addon:GetRaceMedalTime(medal)
 	local data = raceData
@@ -156,9 +164,12 @@ function DragonridingJournal_TimerMixin:Start(data)
 	self.playing = true
 	self.paused = false
 	self:SetScript("OnUpdate", 	self.OnUpdate  )
-	raceData = data
-	DragonJournalRaceGoal.GoalTime:SetFormattedText( GOLD..addon:GetRaceMedalTime("gold"))
+	self:SetMedalTime()
 	f:RegisterEvent("UNIT_SPELLCAST_SENT")
+end
+
+function DragonridingJournal_TimerMixin:SetMedalTime()
+	DragonJournalRaceGoal.GoalTime:SetFormattedText( GOLD..addon:GetRaceMedalTime("gold"))
 end
 
 
@@ -170,6 +181,7 @@ end
 
 function DragonridingJournal_TimerMixin:Stop()
 	self.playing = false
+	raceData = nil
 	self:SetScript("OnUpdate", nil)
 
 	f:UnregisterEvent("CHAT_MSG_MONSTER_SAY")
@@ -239,11 +251,16 @@ function f:OnEvent(self, event, ...)
 			local text =  ...
 			local playerName = GetUnitName("player")
 			local match = string.find(text, READY)
-			local raceData = addon:GetRaceID()
+			raceData =  addon:GetRaceID()
 			if raceData and chatPlayer == playerName then
 				if string.find(text, READY) then
 					DragonJournalRaceTimer:Reset() 	
 					DragonJournalRaceTimer:Show()
+					DragonJournalRaceTimer:SetMedalTime(raceData)
+					if not addon:IsHooked(EventToastManagerFrame, "OnShow") then
+						addon:SecureHookScript(EventToastManagerFrame, "OnShow", function(...) addon:GetRaceTime(EventToastManagerFrame.currentDisplayingToast.toastInfo) end, true)
+					end
+					
 				elseif string.find(text, GO) then
 					DragonJournalRaceTimer:Reset() 	
 					DragonJournalRaceTimer:Show()
@@ -266,17 +283,14 @@ function f:OnEvent(self, event, ...)
 		if spellID == RESET_RACE then
 			DragonJournalRaceTimer:Hide()
 			DragonJournalRaceTimer:Stop() 
-			DragonJournalRaceTimer:Hide()
- 
 		end
 
 	elseif event == "QUEST_REMOVED" then
 		local questID =  ...
 		if questID == raceQuestID then
 			DragonJournalRaceTimer:Hide()
-			DragonJournalRaceTimer:Stop()  
+			DragonJournalRaceTimer:Stop()
+			addon:Unhook(EventToastManagerFrame, "OnShow")
 		end
 	end
 end
-
-

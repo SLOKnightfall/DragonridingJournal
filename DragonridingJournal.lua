@@ -23,8 +23,8 @@ local realmName
 local playerClass, classID,_
 local keybindOverritten
 local launchSpells = {386451, 372610, 383363}
-local DragonFlyingSpells = {368896, 368899, 360954, 368901}
-local DragonFlyingZones = {2022, 2023, 2024, 2025, 2107, 2112}
+local DRAGON_SPELL_ID = {368896, 368899, 360954, 368901}
+local DRAGON_ZONES = {2022, 2023, 2024, 2025, 2107, 2112}
 local combatDelay = false
 
 local MinimapIcon = LibStub("LibDBIcon-1.0")
@@ -73,7 +73,7 @@ function addon.DataBroker:Toggle(value)
 end	
 
 function addon.DataBroker:CheckZone()
-	if not tContains(DragonFlyingZones, CurrentZone) then
+	if not tContains(DRAGON_ZONES, CurrentZone) then
 		--MinimapIcon:Hide("DragonGuideVigor")
 	else
 		if addon.db.profile.showMinimap then
@@ -1061,7 +1061,6 @@ function addon:OnEnable()
 	addon:RegisterEvent("UNIT_SPELLCAST_START", "EventHandler")
 	addon:RegisterEvent("UNIT_AURA", "EventHandler")
 
-	addon:SecureHookScript(EventToastManagerFrame, "OnShow", function(...) addon:GetRaceTime(EventToastManagerFrame.currentDisplayingToast.toastInfo) end, true)
 	local dragons = self.db.char.dragons
 	for i=1, 4 do
 		if not dragons[i] then
@@ -1133,7 +1132,7 @@ function addon:AuraScan()
 			thrillFound = true 
 		end
 
-		if tContains(DragonFlyingSpells, spellID) then
+		if tContains(DRAGON_SPELL_ID, spellID) then
 			addon.currentDragon = spellID
 			onDragon = true
 			return true
@@ -1232,8 +1231,9 @@ function addon:EventHandler(event, ...)
 		end
 
 	elseif event == "UNIT_AURA" then
-		local unit = ...
+		local unit, info = ...
 		if unit == "player" then
+			--if info.removedAuraInstanceIDs  then print(info.removedAuraInstanceIDs); xx = info.removedAuraInstanceIDs end
 			addon:AuraScan()
 		end
 
@@ -1246,7 +1246,7 @@ function addon:EventHandler(event, ...)
 		elseif spellID == 372608  then
 			addon:PrintEmote(profile.use_surge, true)
 
-		elseif tContains(DragonFlyingSpells, spellID) then
+		elseif tContains(DRAGON_SPELL_ID, spellID) then
 			addon:PrintEmote(profile.summon_end)
 			--self.db.char.mounted = self.db.char.mounted or {}
 			--self.db.char.mounted[addon:GetCurrentDragon()] = self.db.char.mounted[addon:GetCurrentDragon()] or 0
@@ -1261,7 +1261,7 @@ function addon:EventHandler(event, ...)
 
 	elseif event == "UNIT_SPELLCAST_START" then
 		local unit, _, spellID = ...
-		if unit == "player" and tContains(DragonFlyingSpells, spellID) then
+		if unit == "player" and tContains(DRAGON_SPELL_ID, spellID) then
 			currentDragon = spellID
 			addon:PrintEmote(profile.summon_start)
 		 end
